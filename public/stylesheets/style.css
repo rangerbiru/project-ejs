@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.line {
+  height: 4px;
+  width: 60%;
+  background-color: #fff;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 20px 0;
+}
+
+.bg-home {
+  background: linear-gradient(rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)), url('../images/pexels-pixabay-289737.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+}

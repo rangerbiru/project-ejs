@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRUD ExpressJs | Kelas <%= title %>
+    </title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+        integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="d-flex tes">
+        <div class="col-md-3">
+            <div class="side-nav bg-dark min-vh-100 p-5">
+                <h3 class="text-white text-center"><i class="bi bi-mortarboard-fill"></i> Sekolah Rabbaanii</h3>
+                <div class="line"></div>
+
+                <ul class="w-100 ps-0 d-flex align-items-center flex-column my-3 gap-3 fs-5">
+                    <li><a class="text-decoration-none text-white" href="/siswa/kelas10"><i class="bi bi-person"></i>
+                            Siswa Kelas 10</a></li>
+                    <li><a class="text-decoration-none text-white" href="/siswa/kelas11"><i class="bi bi-person"></i>
+                            Siswa Kelas 11</a></li>
+                    <li><a class="text-decoration-none text-white" href="/siswa/kelas12"><i class="bi bi-person"></i>
+                            Siswa Kelas 12</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9 p-4">
+            <h2>Form Siswa | Kelas <%= title %>
+            </h2>
+            <% if (messages.success) { %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%- messages.success %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <% } %>
+                    <% if (messages.error) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <%- messages.error %>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                        <% } %>
+
+                            <div class="card border-0 shadow rounded">
+                                <div class="card-body">
+                                    <a href="/siswa/kelas<%= title %>/add" class="btn btn-md btn-success mb-3">Tambah
+                                        Data
+                                        Siswa</a>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama Siswa</th>
+                                                <th scope="col">Alamat</th>
+                                                <th scope="col">No Telepon</th>
+                                                <th scope="col">Gambar</th>
+                                                <th scope="col" colspan="2">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(data.length){ for(var i=0; i< data.length; i++) {%>
+                                                <tr class="text-center">
+                                                    <!-- Ini ID -->
+                                                    <td scope="row" class="text-center">
+                                                        <%= (i+1) %>
+                                                    </td>
+                                                    <!-- Ini Nama Siswa -->
+                                                    <td>
+                                                        <%= data[i].nama_siswa%>
+                                                    </td>
+                                                    <!-- Ini Alamat -->
+                                                    <td>
+                                                        <%= data[i].alamat%>
+                                                    </td>
+                                                    <!-- Ini Telepon -->
+                                                    <td>
+                                                        <%= data[i].telepon%>
+                                                    </td>
+                                                    <td>
+                                                        <img src="/images/<%= data[i].image%>" alt="<%= data[i].image%>"
+                                                            width="50" height="50">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="/siswa/kelas<%= title %>/edit/<%=data[i].id%>"
+                                                            class="btn btn-sm btn-primary">EDIT</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a onclick="return confirm('Apakah Data Ingin Dihapus?')"
+                                                            href="/siswa/kelas<%= title %>/delete/<%=data[i].id%>"
+                                                            class="btn btn-sm btn-danger">HAPUS</a>
+                                                    </td>
+                                                </tr>
+                                                <% } }else{ %>
+                                                    <tr>
+                                                        <td colspan="5">
+                                                            <div class="alert alert-danger" role="alert">
+                                                                Data Tidak Ditemukan !
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+
+</html>
